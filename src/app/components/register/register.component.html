@@ -1,0 +1,48 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <form #frm="ngForm" (ngSubmit)="UyeOl()">
+        <div class="card">
+          <div class="card-header">
+            <h5>Üye Kayıt</h5>
+          </div>
+          <div class="card-body">
+            <div class="form-group">
+              <label>Adı Soyadı</label>
+              <input type="text" name="adsoyad" #adsoyad class="form-control" [(ngModel)]="secUye.adsoyad" required>
+            </div>
+            <div class="form-group">
+              <label>E-Posta Adresi</label>
+              <input type="text" name="mail" #mail class="form-control" [(ngModel)]="secUye.mail" required>
+            </div>
+            <div class="form-group">
+              <label>Parola</label>
+              <input type="password" name="parola" #parola class="form-control" [(ngModel)]="secUye.parola" required>
+            </div>
+          </div>
+          <div class="card-footer">
+            <input type="submit" class="btn btn-outline-primary" value="Kayıt Ol" [disabled]="frm.invalid">
+            <button class="btn btn-link btn-block" style="float: right;" [routerLink]="['/login']">Zaten Bir Hesabım
+              Var</button>
+
+            <!--Satıcı ekranı bağlantı Başlangıç!-->
+            <div class="row">
+              <div class="col-md-6">
+                <h3>Satıcı Mısın</h3>
+              </div>
+              <div class="col-md-6">
+                <button class="btn btn-outline-primary" [routerLink]="['/adminlogin']">Satıcı
+                  Ekranına
+                  Giriş Yap</button>
+              </div>
+            </div>
+            <!--Satıcı Ekranı Bağlantı Bitiş-->
+          </div>
+        </div>
+      </form>
+      <div [ngClass]="sonuc.islem ? 'alert alert-success':'alert alert-danger'" *ngIf="sonuc.mesaj.length>0">
+        {{sonuc.mesaj}}</div>
+    </div>
+  </div>
+</div>
