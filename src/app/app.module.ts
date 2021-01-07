@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AdminLogoinComponent } from './components/adminLogoin/adminLogoin.component';
+import { KategorilerComponent } from './components/kategoriler/kategoriler.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AdminLogoinComponent } from './components/adminLogoin/adminLogoin.compo
     AdminComponent,
     LoginComponent,
     RegisterComponent,
-    AdminLogoinComponent
+    AdminLogoinComponent,
+    KategorilerComponent
 
   ],
   imports: [

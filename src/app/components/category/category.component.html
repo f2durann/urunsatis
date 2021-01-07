@@ -2,5 +2,6 @@
   <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
     {{title}}
   </a>
-  <a href="#" class="list-group-item list-group-item-action" *ngFor="let kategori of categories">{{kategori.name}}</a>
+  <a href="#" class="list-group-item list-group-item-action"
+    *ngFor="let urun of urunler">{{urun.categoryId|uppercase}}</a>
 </div>

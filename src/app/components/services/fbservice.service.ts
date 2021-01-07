@@ -1,7 +1,7 @@
+import { Urun } from './../models/urun';
 import { Uye } from './../models/uye';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database'
-import { Urun } from '../models/urun';
 import { AngularFireAuth } from '@angular/fire/auth';
 
 @Injectable({
@@ -12,11 +12,9 @@ export class FbserviceService {
   private dbUye = '/Uyeler';
   kayitRef: AngularFireList<Urun>;
   uyeRef: AngularFireList<Uye>;
-
   constructor(
     public db: AngularFireDatabase,
     public afAuth: AngularFireAuth
-
   ) {
     this.kayitRef = db.list(this.dbKayit);
     this.uyeRef = db.list(this.dbUye);
@@ -33,12 +31,13 @@ export class FbserviceService {
     else {
       return false;
     }
-
   }
   OturumKapat() {
     return this.afAuth.signOut();
   }
   //Oturum işlemleri Bitiş!
+
+
 
   //Üye İşlemleri Bşlangı!
   UyeEkle(uye: Uye) {
@@ -49,9 +48,9 @@ export class FbserviceService {
   }
   //Üye İşlemleri Bitiş!
 
-  Urunlistele(): AngularFireList<Urun> {
-    return this.kayitRef;
-  }
+  // Urunlistele(): AngularFireList<Urun> {
+  //   return this.kayitRef;
+  // }
   UrunEkle(u: Urun): any {
     return this.kayitRef.push(u);
   }
@@ -60,6 +59,12 @@ export class FbserviceService {
   }
   UrunSil(key: string): Promise<void> {
     return this.kayitRef.remove(key);
+  }
+  UrunLisetele() {
+    return this.kayitRef;
+  }
+  UrunFiltrele() {
+    return this.kayitRef;
   }
 
 }

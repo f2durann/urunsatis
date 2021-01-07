@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { map } from 'rxjs/operators';
+import { FbserviceService } from '../services/fbservice.service';
 import { Category } from './category';
 
 @Component({
@@ -7,8 +9,9 @@ import { Category } from './category';
   styleUrls: ['./category.component.scss']
 })
 export class CategoryComponent implements OnInit {
+  urunler: any;
 
-  constructor() { }
+  constructor(public fbservis: FbserviceService) { }
   title = "KATEGORİ LİSTESİ";
   categories: Category[] = [
     { id: 1, name: "Elektronik" },
@@ -18,6 +21,18 @@ export class CategoryComponent implements OnInit {
     { id: 1, name: "İçecek" },
   ]
   ngOnInit() {
+    this.UrunleriListele()
   }
 
+  UrunleriListele() {
+    this.fbservis.UrunLisetele().snapshotChanges().pipe(
+      map(changes =>
+        changes.map((c: { payload: { key: any; val: () => any; }; }) =>
+          ({ key: c.payload.key, ...c.payload.val() })
+        )
+      )
+    ).subscribe((data: any) => {
+      this.urunler = data;
+    });
+  }
 }

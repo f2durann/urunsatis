@@ -24,13 +24,13 @@ export class AdminComponent implements OnInit {
 
   }
   UrunleriListele() {
-    this.fbservis.Urunlistele().snapshotChanges().pipe(
+    this.fbservis.UrunLisetele().snapshotChanges().pipe(
       map(changes =>
-        changes.map(c =>
+        changes.map((c: { payload: { key: any; val: () => any; }; }) =>
           ({ key: c.payload.key, ...c.payload.val() })
         )
       )
-    ).subscribe(data => {
+    ).subscribe((data: any) => {
       this.urunler = data;
     });
   }
