@@ -1,3 +1,4 @@
+import { Sepetim } from './../models/sepetim';
 import { Urun } from './../models/urun';
 import { Uye } from './../models/uye';
 import { Injectable } from '@angular/core';
@@ -10,14 +11,17 @@ import { AngularFireAuth } from '@angular/fire/auth';
 export class FbserviceService {
   private dbKayit = '/Urunler';
   private dbUye = '/Uyeler';
+  private dbsepet = '/Sepetim';
   kayitRef: AngularFireList<Urun>;
   uyeRef: AngularFireList<Uye>;
+  sepetRef: AngularFireList<Sepetim>;
   constructor(
     public db: AngularFireDatabase,
     public afAuth: AngularFireAuth
   ) {
     this.kayitRef = db.list(this.dbKayit);
     this.uyeRef = db.list(this.dbUye);
+    this.sepetRef = db.list(this.dbsepet);
   }
 
   //Oturum İşlemleri Başlangıç!
@@ -38,7 +42,6 @@ export class FbserviceService {
   //Oturum işlemleri Bitiş!
 
 
-
   //Üye İşlemleri Bşlangı!
   UyeEkle(uye: Uye) {
     return this.uyeRef.push(uye);
@@ -48,9 +51,7 @@ export class FbserviceService {
   }
   //Üye İşlemleri Bitiş!
 
-  // Urunlistele(): AngularFireList<Urun> {
-  //   return this.kayitRef;
-  // }
+  //urun işlemleri başlangıç
   UrunEkle(u: Urun): any {
     return this.kayitRef.push(u);
   }
@@ -66,5 +67,26 @@ export class FbserviceService {
   UrunFiltrele() {
     return this.kayitRef;
   }
+  UrunListeleByUID(uid: string) {
+    return this.db.list("/Urunler", q => q.orderByChild("uid").equalTo(uid));
 
+  }
+  UrunByKey(key: string) {
+    return this.db.object("/Urunler/" + key);
+  }
+  //urun işlemleri bitiş
+
+  //sepet bölümü başlangıç
+  SepetEkle(s: Sepetim): any {
+    return this.sepetRef.push(s);
+  }
+  //sepet bölümü bitiş
+
+
+
+  // Urunlistele(): AngularFireList<Urun> {
+  //   return this.kayitRef;
+  // }
 }
+
+

@@ -1,8 +1,10 @@
+import { Uye } from './../models/uye';
 import { Urun } from './../models/urun';
 import { Component, OnInit } from '@angular/core';
 import { FbserviceService } from '../services/fbservice.service';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
+import { using } from 'rxjs';
 
 
 @Component({
@@ -14,6 +16,8 @@ export class ProductComponent implements OnInit {
   adsoyad: string = "";
   uid: string = "";
   urunler: Urun[] = [];
+  uyebilgi: String = "";
+
 
   constructor(
     public fbservis: FbserviceService,
@@ -47,7 +51,10 @@ export class ProductComponent implements OnInit {
   addToCard() {
     alert("Ürün Spete Eklendi")
   }
-
+  SepeteEkle() {
+    // this.uyebilgi=this.fbservis.OturumKontrol(localStorage.getItem(this.user));
+    // this.fbservis.SepetEkle(Uuyebilgiye);
+  }
 
 
 

@@ -1,3 +1,5 @@
+import { SepetimComponent } from './components/sepetim/sepetim.component';
+import { UrunlerDetayComponent } from './components/urunlerDetay/urunlerDetay.component';
 import { environment } from './../environments/environment';
 import { ProductComponent } from './components/product/product.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -15,6 +17,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AdminLogoinComponent } from './components/adminLogoin/adminLogoin.component';
 import { KategorilerComponent } from './components/kategoriler/kategoriler.component';
+import { KartVeAdresBilgisiComponent } from './components/kartVeAdresBilgisi/kartVeAdresBilgisi.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { KategorilerComponent } from './components/kategoriler/kategoriler.compo
     LoginComponent,
     RegisterComponent,
     AdminLogoinComponent,
-    KategorilerComponent
+    KategorilerComponent,
+    UrunlerDetayComponent,
+    SepetimComponent,
+    KartVeAdresBilgisiComponent
 
   ],
   imports: [

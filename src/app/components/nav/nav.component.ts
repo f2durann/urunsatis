@@ -1,5 +1,6 @@
 import { FbserviceService } from './../services/fbservice.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
@@ -8,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 export class NavComponent implements OnInit {
   adsoyad: string = "";
   uid: string = "";
-  constructor(public fbServis: FbserviceService
+  constructor(public fbServis: FbserviceService,
+    public router: Router
+
   ) { }
 
   ngOnInit() {
@@ -16,6 +19,11 @@ export class NavComponent implements OnInit {
     this.uid = user.uid;
     this.adsoyad = user.displayName;
   }
+  OturumKapat() {
+    this.fbServis.OturumKapat().then(d => {
+      localStorage.removeItem("user");
+      this.router.navigate(['/login']);
+    });
 
-
+  }
 }

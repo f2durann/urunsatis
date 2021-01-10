@@ -7,6 +7,9 @@ import { ProductComponent } from './components/product/product.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 import { KategorilerComponent } from './components/kategoriler/kategoriler.component';
+import { UrunlerDetayComponent } from './components/urunlerDetay/urunlerDetay.component';
+import { SepetimComponent } from './components/sepetim/sepetim.component';
+import { KartVeAdresBilgisiComponent } from './components/kartVeAdresBilgisi/kartVeAdresBilgisi.component';
 
 
 const redirectLogin = () => redirectUnauthorizedTo(['login'])  //atama sayfası
@@ -21,17 +24,34 @@ const routes: Routes = [
   },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'Anasayfa', component: ProductComponent },
+  // {
+  //   path: '',
+  //   component: ProductComponent,
+  //   canActivate: [AngularFireAuthGuard],
+  //   data: {
+  //     authGuardPipe: redirectLogin
+  //   }
+  // },
+  { path: 'adminlogin', component: AdminLogoinComponent },
+  { path: 'kategoriler', component: KategorilerComponent },
+  { path: 'sepetim', component: SepetimComponent },
   {
-    path: '',
-    component: ProductComponent,
+    path: 'urundetay/:key',
+    component: UrunlerDetayComponent,
     canActivate: [AngularFireAuthGuard],
     data: {
       authGuardPipe: redirectLogin
     }
   },
-  { path: 'adminlogin', component: AdminLogoinComponent },
-  { path: 'kategoriler', component: KategorilerComponent },
-
+  {
+    path: 'adresvekartbilgisi',
+    component: KartVeAdresBilgisiComponent,
+    canActivate: [AngularFireAuthGuard],
+    data: {
+      authGuardPipe: redirectLogin
+    }
+  },
 
 ];
 

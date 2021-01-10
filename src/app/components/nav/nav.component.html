@@ -1,7 +1,7 @@
 <div class="container">
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="product">Ürün Satış</a>
+      <a class="navbar-brand" href="Anasayfa">Ürün Satış</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -9,12 +9,12 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="product">Ana Sayfa</a>
+            <a class="nav-link active" aria-current="page" href="Anasayfa">Ana Sayfa</a>
           </li>
 
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
+            <a class="nav-link active dropdown-toggle" href="kategoriler" id="navbarDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
               Kategoriler
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -23,32 +23,47 @@
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Daha Fazlası</a></li>
+              <li><a class="dropdown-item" href="kategoriler">Daha Fazlası</a></li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">İletişim</a>
-          </li>
+
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
+            <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
               Profilim
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Sepetim</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/sepetim']">Sepetim</a></li>
               <li><a class="dropdown-item" href="#">Adres Bilgilerim</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Çıkış Yap</a></li>
+              <li><a class="dropdown-item" href="login">Giriş Yap</a>
+              </li>
+              <li><a *ngIf="fbServis.OturumKontrol()" (click)="OturumKapat()" class="dropdown-item"
+                  href="Anasayfa">Çıkış
+                  Yap</a></li>
             </ul>
           </li>
 
 
-          <!--shop icon başlangıc-->
-
 
         </ul>
+
+        <li class="">
+          <button class="btn btn-primary">
+
+            <i class="bi bi-cart4">sepetim
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart4"
+                viewBox="0 0 16 16">
+                <path
+                  d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+              </svg>
+
+            </i>
+          </button>
+        </li>
+
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Ara</button>

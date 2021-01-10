@@ -1,3 +1,13 @@
-<p>
-  kategoriler works!
-</p>
+<div class="container ">
+  <div class="cow">
+    <div class="col-md-3" style="float: right;">
+      <ul *ngFor="let urun of urunler" class="list-group list-group-horizontal">
+        <a href="">
+          <li class="list-group-item">{{urun.categoryId}}</li>
+        </a>
+
+      </ul>
+    </div>
+  </div>
+
+</div>

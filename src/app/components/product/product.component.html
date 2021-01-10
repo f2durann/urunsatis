@@ -16,9 +16,12 @@
       <div class="card-body">
         <h5 class="card-title">{{urun.urunIsmi|uppercase}}</h5>
         <p class="card-text">{{urun.description|titlecase}}</p>
-        <a (click)="addToCard()" href="#" class="btn btn-primary">Sepete Ekle</a>
+        <a (click)="addToCard()" (click)="SepeteEkle()" class="btn btn-primary">Sepete Ekle</a>
+        <a [routerLink]="['/urundetay',urun.key]" style="float: right;" class="btn btn-primary ml-2">Detay</a>
 
 
+
+        <!-- *ngIf="fbservis.OturumKontrol()" oturum açıksa göster kodu -->
 
 
 
