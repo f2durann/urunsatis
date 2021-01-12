@@ -4,4 +4,5 @@ export class Uye {
      mail: string = "";
      parola: string = "";
      uid: string = "";
+     sepettekilerim = "";
 }

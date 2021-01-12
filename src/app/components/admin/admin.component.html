@@ -6,6 +6,7 @@
         <thead>
           <th>Ürün Adı</th>
           <th>Fiyatı</th>
+          <th>Ürünün Kısa Açıklaması</th>
           <th>Kategorisi</th>
           <th>Açıklaması</th>
           <th>img</th>
@@ -16,6 +17,7 @@
           <tr *ngFor="let urun of urunler">
             <td>{{urun.urunIsmi}}</td>
             <td>{{urun.price}}</td>
+            <td>{{urun.urunkisaaciklama}}</td>
             <td>{{urun.categoryId}}</td>
             <td>{{urun.description}}</td>
             <td>{{urun.imageUrl}}</td>
@@ -43,6 +45,11 @@
         <div class="form-group">
           <label>Fiyat</label>
           <input type="text" class="form-control" name="price" [(ngModel)]="secKayit.price" required>
+        </div>
+        <div class="form-group">
+          <label>Ürünün Kısa Açıklaması</label>
+          <input type="text" class="form-control" name="urunkisaaciklama" [(ngModel)]="secKayit.urunkisaaciklama"
+            required>
         </div>
         <div class="form-group">
           <label>categoryId</label>

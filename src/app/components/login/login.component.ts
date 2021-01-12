@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
       if (d.user) {
         localStorage.setItem("user", JSON.stringify(d.user));
         this.router.navigate(['/Product']);
+        alert("Giriş Başarılı");
       }
     }, () => {
       this.sonuc.islem = false;

@@ -1,7 +1,7 @@
-<div class="list-group mt-3">
+<div class="list-group mt-3 d-none d-sm-block">
   <a href="kategoriler" class="list-group-item list-group-item-action active" aria-current="true">
     {{title}}
   </a>
-  <a href="kategoriler" class="list-group-item list-group-item-action"
+  <a (click)="SeciliKategoriyiGetir()" class="list-group-item list-group-item-action "
     *ngFor="let urun of urunler">{{urun.categoryId|uppercase}}</a>
 </div>

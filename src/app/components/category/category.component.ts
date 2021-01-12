@@ -1,7 +1,9 @@
+import { Urun } from './../models/urun';
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { FbserviceService } from '../services/fbservice.service';
 import { Category } from './category';
+
 
 @Component({
   selector: 'app-category',
@@ -10,16 +12,11 @@ import { Category } from './category';
 })
 export class CategoryComponent implements OnInit {
   urunler: any;
+  secUrun: Urun = new Urun();
 
   constructor(public fbservis: FbserviceService) { }
   title = "KATEGORİ LİSTESİ";
-  categories: Category[] = [
-    { id: 1, name: "Elektronik" },
-    { id: 1, name: "Bilgisayar" },
-    { id: 1, name: "İletişim" },
-    { id: 1, name: "Müzik" },
-    { id: 1, name: "İçecek" },
-  ]
+
   ngOnInit() {
     this.UrunleriListele()
   }
@@ -34,5 +31,8 @@ export class CategoryComponent implements OnInit {
     ).subscribe((data: any) => {
       this.urunler = data;
     });
+  }
+  SeciliKategoriyiGetir() {
+    // this.fbservis.UrunListeleByUID(this.secUrun.categoryId);
   }
 }

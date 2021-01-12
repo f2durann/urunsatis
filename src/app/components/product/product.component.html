@@ -10,13 +10,15 @@
 
 
 
-  <div class="row mt-2 ">
-    <div *ngFor="let urun of urunler" class="card" style="width: 18rem;">
-      <img class="card-img-top img-thumbnail rounded" src={{urun.imageUrl}} alt="Card image cap">
+  <div class="row mt-2 justify-content-center ">
+    <div *ngFor="let urun of urunler" class="card m-3 border-dark mb-3 " style="width: 19rem;">
+      <img class="card-img-top rounded-top boyut" src={{urun.imageUrl}} alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">{{urun.urunIsmi|uppercase}}</h5>
-        <p class="card-text">{{urun.description|titlecase}}</p>
-        <a (click)="addToCard()" (click)="SepeteEkle()" class="btn btn-primary">Sepete Ekle</a>
+        <p class="card-text">{{urun.urunkisaaciklama|titlecase}}</p>
+        <p class="card-text">{{urun.price}}</p>
+        <a (click)="addToCard()" (click)="SepeteEkle()" class="btn btn-primary">Sepete
+          Ekle</a>
         <a [routerLink]="['/urundetay',urun.key]" style="float: right;" class="btn btn-primary ml-2">Detay</a>
 
 

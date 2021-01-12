@@ -1,8 +1,9 @@
+import { Sonuc } from './../models/sonuc';
 import { Uye } from './../models/uye';
 import { Urun } from './../models/urun';
 import { Component, OnInit } from '@angular/core';
 import { FbserviceService } from '../services/fbservice.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { using } from 'rxjs';
 
@@ -17,6 +18,7 @@ export class ProductComponent implements OnInit {
   uid: string = "";
   urunler: Urun[] = [];
   uyebilgi: String = "";
+  secUrunSepeteEkele: Uye = new Uye();
 
 
   constructor(
@@ -52,9 +54,25 @@ export class ProductComponent implements OnInit {
     alert("Ürün Spete Eklendi")
   }
   SepeteEkle() {
-    // this.uyebilgi=this.fbservis.OturumKontrol(localStorage.getItem(this.user));
-    // this.fbservis.SepetEkle(Uuyebilgiye);
+    // this.fbservis.UyeEkle().then(() => {
+    //   alert("sepete eklendi");
+    // });
   }
+
+
+
+  // if (this.secKayit.key == null) {
+  //   this.fbservis.UrunEkle(this.secKayit).then(() => {
+  //     this.sonuc.islem = true;
+  //     this.sonuc.mesaj = "Kayıt Eklendi";
+  //   });
+  // }
+  // else {
+  //   this.fbservis.UrunDuzenle(this.secKayit).then(() => {
+  //     this.sonuc.islem = true;
+  //     this.sonuc.mesaj = "Kayıt Düzenlendi";
+  //   });
+  // }
 
 
 
