@@ -1,96 +1,126 @@
-<div class="container">
-  <div class="row mt-2">
-    <div class="col-md-12">
-      <h4 class="alert alert-success" role="alert">Kayıtlar</h4>
-      <table class="table  table-hover">
-        <thead>
-          <th>Ürün Adı</th>
-          <th>Fiyatı</th>
-          <th>Ürünün Kısa Açıklaması</th>
-          <th>Kategorisi</th>
-          <th>Açıklaması</th>
-          <th>img</th>
-          <th>Düzenle</th>
-          <th>Sil</th>
-        </thead>
-        <tbody>
-          <tr *ngFor="let urun of urunler">
-            <td>{{urun.urunIsmi}}</td>
-            <td>{{urun.price}}</td>
-            <td>{{urun.urunkisaaciklama}}</td>
-            <td>{{urun.categoryId}}</td>
-            <td>{{urun.description}}</td>
-            <td>{{urun.imageUrl}}</td>
-            <td><button class="btn btn-outline-warning" (click)="UrunDuzenle(urun)">Düzenle</button></td>
-            <td><button class="btn btn-outline-danger" (click)="KayitSil(urun)">Sil</button></td>
-          </tr>
-        </tbody>
-      </table>
+<div>
+  <div class="container">
+    <div class="row mt-2">
+      <div class="col-md-12">
+        <h4 class="alert alert-success" role="alert">Kayıtlar</h4>
+        <table class="table  table-hover">
+          <thead>
+            <th>Ürün Adı</th>
+            <th>Fiyatı</th>
+            <th>Ürünün Kısa Açıklaması</th>
+            <th>Kategorisi</th>
+            <th>Açıklaması</th>
+            <th>img</th>
+            <th>Düzenle</th>
+            <th>Sil</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let urun of urunler">
+              <td>{{urun.urunIsmi}}</td>
+              <td>{{urun.price}}</td>
+              <td>{{urun.urunkisaaciklama}}</td>
+              <td>{{urun.categoryId}}</td>
+              <td>{{urun.description}}</td>
+              <td>{{urun.imageUrl}}</td>
+              <td><button class="btn btn-outline-warning" (click)="UrunDuzenle(urun)">Düzenle</button></td>
+              <td><button class="btn btn-outline-danger" (click)="KayitSil(urun)">Sil</button></td>
+            </tr>
+          </tbody>
+        </table>
 
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-8">
+        <h4 class="aler alert-danger" role="alert">Kayıt Ekle Düzenle</h4>
+        <hr>
+        <form #frm="ngForm" (submit)="Kaydet()">
+          <div class="form-group">
+            <label>Adı</label>
+            <input type="text" class="form-control" name="urunİsmi" [(ngModel)]="secKayit.urunIsmi" required>
+            <input type="hidden" class="form-control" name="key" [(ngModel)]="secKayit.key">
+
+          </div>
+          <div class="form-group">
+            <label>Fiyat</label>
+            <input type="text" class="form-control" name="price" [(ngModel)]="secKayit.price" required>
+          </div>
+          <div class="form-group">
+            <label>Ürünün Kısa Açıklaması</label>
+            <input type="text" class="form-control" name="urunkisaaciklama" [(ngModel)]="secKayit.urunkisaaciklama"
+              required>
+          </div>
+
+
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              KATEGORY Listesi
+            </button>
+            <ul *ngFor="let kategorylist of kategoryler" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li><a class="dropdown-item" (click)="kategory='laptop'">{{kategorylist.katAdi}}</a></li>
+            </ul>
+          </div>
+
+
+
+
+
+          <div class="form-group">
+            <label>categoryId</label>
+            <input type="text" class="form-control" name="categoryId" [(ngModel)]="kategory" required>
+          </div>
+          <div class="form-group">
+            <label>Açıklaması</label>
+            <textarea class="form-control" name="description" [(ngModel)]="secKayit.description" required></textarea>
+          </div>
+          <div class="form-group">
+            <label>İmg Url</label>
+            <textarea class="form-control" name="imageUrl" [(ngModel)]="secKayit.imageUrl" required></textarea>
+          </div>
+          <div class="form-group">
+            <input type="submit" value="Kaydet" class="btn btn-outline-success mt-2" style="float:right;"
+              [disabled]="frm.invalid">
+
+          </div>
+        </form>
+        <button class="btn btn-outline-danger mt-2" (click)="Vazgec()">Vazgeç</button>
+
+        <div [ngClass]="sonuc.islem ? 'alert alert-success':'alert alert-danger'" class="mt-2"
+          *ngIf="sonuc.mesaj.length>0">
+          {{sonuc.mesaj}}</div>
+
+      </div>
+
+      <!--aşşadaki kısım kayıt ekle formunun yanındaki bilgilendirme ekranı-->
+      <div class="col-4">
+        <h4 class="aler alert-danger" role="alert">Kategori ekleme işlemi buradaki kategoriler içinden eklenmelidir!
+        </h4>
+        <table class="table  table-hover">
+          <thead>
+            <th class="alert alert-primary" role="alert">Ürün Kategorileri:</th>
+
+          </thead>
+          <tbody>
+            <tr *ngFor="let urun of urunler">
+              <td>{{urun.categoryId}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
-<div class="container">
-  <div class="row">
-    <div class="col-8">
-      <h4 class="aler alert-danger" role="alert">Kayıt Ekle Düzenle</h4>
-      <hr>
-      <form #frm="ngForm" (submit)="Kaydet()">
-        <div class="form-group">
-          <label>Adı</label>
-          <input type="text" class="form-control" name="urunİsmi" [(ngModel)]="secKayit.urunIsmi" required>
-          <input type="hidden" class="form-control" name="key" [(ngModel)]="secKayit.key">
 
-        </div>
-        <div class="form-group">
-          <label>Fiyat</label>
-          <input type="text" class="form-control" name="price" [(ngModel)]="secKayit.price" required>
-        </div>
-        <div class="form-group">
-          <label>Ürünün Kısa Açıklaması</label>
-          <input type="text" class="form-control" name="urunkisaaciklama" [(ngModel)]="secKayit.urunkisaaciklama"
-            required>
-        </div>
-        <div class="form-group">
-          <label>categoryId</label>
-          <input type="text" class="form-control" name="categoryId" [(ngModel)]="secKayit.categoryId" required>
-        </div>
-        <div class="form-group">
-          <label>Açıklaması</label>
-          <textarea class="form-control" name="description" [(ngModel)]="secKayit.description" required></textarea>
-        </div>
-        <div class="form-group">
-          <label>İmg Url</label>
-          <textarea class="form-control" name="imageUrl" [(ngModel)]="secKayit.imageUrl" required></textarea>
-        </div>
-        <div class="form-group">
-          <input type="submit" value="Kaydet" class="btn btn-outline-success mt-2" style="float:right;"
-            [disabled]="frm.invalid">
 
-        </div>
-      </form>
-      <button class="btn btn-outline-danger mt-2" (click)="Vazgec()">Vazgeç</button>
 
-      <div [ngClass]="sonuc.islem ? 'alert alert-success':'alert alert-danger'" class="mt-2"
-        *ngIf="sonuc.mesaj.length>0">
-        {{sonuc.mesaj}}</div>
 
-    </div>
 
-    <!--aşşadaki kısım kayıt ekle formunun yanındaki bilgilendirme ekranı-->
-    <div class="col-4">
-      <h4 class="aler alert-danger" role="alert">Kategori ekleme işlemi buradaki kategoriler içinden eklenmelidir!</h4>
-      <table class="table  table-hover">
-        <thead>
-          <th class="alert alert-primary" role="alert">Ürün Kategorileri:</th>
 
-        </thead>
-        <tbody>
-          <tr *ngFor="let urun of urunler">
-            <td>{{urun.categoryId}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+<div class="form-group">
+  <label>kategory ekleme bölümü</label>
+  <input type="text" class="form-control" name="price" [(ngModel)]="secKat.katAdi" required>
+  <td><button class="btn btn-outline-danger" (click)="KatKaydet()">ekle</button></td>
 </div>

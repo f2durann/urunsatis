@@ -1,3 +1,4 @@
+import { Kategory } from './../models/kategori';
 import { FbserviceService } from './../services/fbservice.service';
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
@@ -10,6 +11,7 @@ import { map } from 'rxjs/operators';
 })
 export class KategorilerComponent implements OnInit {
   urunler: any;
+  kategory: Kategory = new Kategory();
 
 
   constructor(public fbservis: FbserviceService) { }

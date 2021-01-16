@@ -1,41 +1,94 @@
 <div class="container mt-2">
   <div class="row">
-    <div class="container">
-      <nav class="navbar navbar-expand-lg active navbar-light bg-primary">
-        <div class="container-md">
-          <a class="navbar-brand" href="#"></a>
-        </div>
-      </nav>
-    </div>
-    <div class="col-md-6">
-      <img src={{secUrun?.imageUrl}} class="img-thumbnail" alt="...">
-    </div>
+    <div class="col-md-2">
+      <div class="list-group mt-3 d-none d-sm-block">
+        <a href="kategoriler" class="list-group-item list-group-item-action active" aria-current="true">
+          Kategoriler
+        </a>
+        <div class="d-grid gap-2 col-6 active " *ngFor="let urun of urunler">
+          <div class="btn-group dropend">
+            <button type="button" class="btn btn-white dropdown-toggle active" [routerLink]="['/kategoriler']"
+              aria-expanded="false">
+              {{urun.categoryId|uppercase}}
+            </button>
 
-    <div class="col-md-6">
-      <div class="card text-center">
-        <div class="card-header bg-primary">
-          {{secUrun.urunIsmi|uppercase}}
-        </div>
-        <div class="card-body">
-          <h5 class="card-title"></h5>
-          <p class="card-text "> {{secUrun.urunkisaaciklama|titlecase}}</p><br>
-          <p class="card-text">Ürün Açıklaması: {{secUrun.description|titlecase}}</p>
-
-          <p class=" card-text">Ürün Fiyatı: {{secUrun.price}}</p>
-        </div>
-        <div class="card-footer text-muted bg-primary">
-          <div class="d-grid gap-2">
-            <button class="btn btn-primary" type="button">Sepete Ekle</button>
           </div>
         </div>
       </div>
     </div>
-    <div class="container">
-      <nav class="navbar navbar-expand-lg active navbar-light bg-primary">
-        <div class="container-md">
-          <a class="navbar-brand" href="#"></a>
+
+
+
+
+
+
+
+    <div class="col-md-10">
+      <div class="row">
+        <div class="container">
         </div>
-      </nav>
+        <div class="col-md-6">
+          <img src={{secUrun?.imageUrl}} class="img-thumbnail" alt="...">
+        </div>
+
+        <div class="col-md-6">
+          <div class="card text-center">
+            <div class="card-header bg-primary">
+              {{secUrun.urunIsmi|uppercase}}
+            </div>
+            <div class="card-body">
+              <h5 class="card-title"></h5>
+              <p class="card-text "> {{secUrun.urunkisaaciklama|titlecase}}</p><br>
+              <p class="card-text">Ürün Açıklaması: {{secUrun.description|titlecase}}</p>
+
+              <p class=" card-text">Ürün Fiyatı: {{secUrun.price}}</p>
+            </div>
+            <div class="card-footer text-muted bg-primary">
+              <div class="d-grid gap-2">
+                <button class="btn btn-primary" (click)="SepeteEkle()" type="button">Sepete Ekle</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <nav class="navbar navbar-expand-lg active navbar-light bg-primary">
+            <div class="container-md">
+              <a class="navbar-brand" href="#"></a>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-5">
+
+  <div class="card text-center">
+    <div class="card-header">
+      Bunlara da Bakan Oldu
+    </div>
+    <div class="card-body " *ngFor="let urun of urunler">
+      <div class="card mb-3" style="max-width: 500px;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img class="imgboyut" src="{{urun.imageUrl}}" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{urun.urunIsmi}}</h5>
+              <p class="card-text">{{urun.urunkisaaciklama}}</p>
+              <p class="card-text"><small class="text-muted"><button class="btn btn-primary"
+                    [routerLink]="['/urundetay',urun.key]">Detay</button></small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer text-muted">
+      <div class="d-grid gap-2">
+        <button class="btn btn-primary" type="button">Daha Fazlası...</button>
+      </div>
     </div>
   </div>
 </div>

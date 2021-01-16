@@ -2,6 +2,13 @@
   <a href="kategoriler" class="list-group-item list-group-item-action active" aria-current="true">
     {{title}}
   </a>
-  <a (click)="SeciliKategoriyiGetir()" class="list-group-item list-group-item-action "
-    *ngFor="let urun of urunler">{{urun.categoryId|uppercase}}</a>
+  <div class="d-grid gap-2 col-6 active " *ngFor="let urun of urunler">
+    <div class="btn-group dropend">
+      <button type="button" class="btn btn-white dropdown-toggle active" [routerLink]="['/kategoriler']"
+        aria-expanded="false">
+        {{urun.categoryId|uppercase}}
+      </button>
+
+    </div>
+  </div>
 </div>

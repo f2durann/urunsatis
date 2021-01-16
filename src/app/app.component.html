@@ -1,17 +1,3 @@
 <app-nav></app-nav>
-<div *ngIf="fbservis.OturumKontrol()">
-
-     <div class="container">
-          <div class="row">
-               <div class="col-md-2">
-                    <app-category></app-category>
-               </div>
-               <div class="col-md-10 ">
-                    <app-product></app-product>
-               </div>
-          </div>
-     </div>
-</div>
-
-
 <router-outlet></router-outlet>
+<app-footer *ngIf="fbservis.OturumKontrol()"></app-footer>

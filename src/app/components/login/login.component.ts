@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     this.fbservis.OturumAc(mail, parola).then((d: { user: any; }) => {
       if (d.user) {
         localStorage.setItem("user", JSON.stringify(d.user));
-        this.router.navigate(['/Product']);
+        this.router.navigate(['/Anasayfa']);
         alert("Giriş Başarılı");
       }
     }, () => {

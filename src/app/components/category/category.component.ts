@@ -32,7 +32,5 @@ export class CategoryComponent implements OnInit {
       this.urunler = data;
     });
   }
-  SeciliKategoriyiGetir() {
-    // this.fbservis.UrunListeleByUID(this.secUrun.categoryId);
-  }
+
 }

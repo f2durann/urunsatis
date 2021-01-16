@@ -1,35 +1,89 @@
 <div class="container">
-  <div class="row mt-3">
-    <div class="form-group">
-      <input class="form-control" id="productName" placeholder="Arama Metnini Buraya Giriniz">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="list-group mt-3 d-none d-sm-block">
+        <a href="kategoriler" class="list-group-item list-group-item-action active" aria-current="true">
+          Kategoriler
+        </a>
+        <div class="d-grid gap-2 col-6 active " *ngFor="let urun of urunler">
+          <div class="btn-group dropend">
+            <button type="button" class="btn btn-white dropdown-toggle active" [routerLink]="['/kategoriler']"
+              aria-expanded="false">
+              {{urun.categoryId|uppercase}}
+            </button>
+
+          </div>
+        </div>
+      </div>
     </div>
-    <small class="form-text text-muted">
-      şuan <strong></strong> aradığınız
-    </small>
-  </div>
 
 
 
-  <div class="row mt-2 justify-content-center ">
-    <div *ngFor="let urun of urunler" class="card m-3 border-dark mb-3 " style="width: 19rem;">
-      <img class="card-img-top rounded-top boyut" src={{urun.imageUrl}} alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">{{urun.urunIsmi|uppercase}}</h5>
-        <p class="card-text">{{urun.urunkisaaciklama|titlecase}}</p>
-        <p class="card-text">{{urun.price}}</p>
-        <a (click)="addToCard()" (click)="SepeteEkle()" class="btn btn-primary">Sepete
-          Ekle</a>
-        <a [routerLink]="['/urundetay',urun.key]" style="float: right;" class="btn btn-primary ml-2">Detay</a>
-
-
-
-        <!-- *ngIf="fbservis.OturumKontrol()" oturum açıksa göster kodu -->
+    <div class="col-md-10 ">
 
 
 
 
 
+      <div id="carouselExampleCaptions" class="carousel slide mt-3" data-bs-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"></li>
+          <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"></li>
+          <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              src="https://images.pexels.com/photos/2292953/pexels-photo-2292953.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+              class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5 class="text-danger">Şaşırtıcı İndirimler</h5>
+              <h6 class="text-dark">Hiçbir Yerde Bulamayacağın Fiyatlar...</h6>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img
+              src="https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?cs=srgb&dl=pexels-photomix-company-230544.jpg&fm=jpg"
+              class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Çok Yakında...</h5>
+              <p>Çok Yakında Mobil Uygulamamız İle Sizlere İnanılmaz Deneyimler Yaşatacağız</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img
+              src="https://images.pexels.com/photos/5632402/pexels-photo-5632402.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+              class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h1 class="text-dark">Bize Güvenebilirsiniz</h1>
 
+            </div>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </a>
+      </div>
+
+      <div class="row mt-2 justify-content-center ">
+        <div *ngFor="let urun of urunler" class="card m-3 border-dark mb-3 " style="width: 19rem;">
+          <img class="card-img-top rounded-top boyut" src={{urun.imageUrl}} alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{urun.urunIsmi|uppercase}}</h5>
+            <p class="card-text">{{urun.urunkisaaciklama|titlecase}}</p>
+            <p class="card-text">{{urun.price}}</p>
+            <div class="card-footer bg-white">
+              <a (click)="SepeteEkle()" class="btn btn-primary">Sepete
+                Ekle</a>
+              <a [routerLink]="['/urundetay',urun.key]" style="float: right;" class="btn btn-primary ml-2">Detay</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -2,6 +2,7 @@ import { Urun } from './../models/urun';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FbserviceService } from '../services/fbservice.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-urunlerDetay',
@@ -14,6 +15,7 @@ export class UrunlerDetayComponent implements OnInit {
   urunler: Urun[] = [];
 
 
+
   constructor(
     public route: ActivatedRoute,
     public fbservis: FbserviceService,
@@ -24,6 +26,7 @@ export class UrunlerDetayComponent implements OnInit {
     this.route.params.subscribe(p => {
       this.key = p.key;
       this.UrunGetir();
+      this.UrunleriListele();
     })
   }
   UrunGetir() {
@@ -31,5 +34,19 @@ export class UrunlerDetayComponent implements OnInit {
       const y = { ...data.payload.toJSON(), key: this.key };
       this.secUrun = (y as Urun);
     });
+  }
+  UrunleriListele() {
+    this.fbservis.UrunLisetele().snapshotChanges().pipe(
+      map((changes: any[]) =>
+        changes.map((c: { payload: { key: any; val: () => any; }; }) =>
+          ({ key: c.payload.key, ...c.payload.val() })
+        )
+      )
+    ).subscribe((data: any) => {
+      this.urunler = data;
+    });
+  }
+  SepeteEkle() {
+    alert("sepete eklendi");
   }
 }

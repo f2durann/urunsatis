@@ -14,6 +14,7 @@ import { KartVeAdresBilgisiComponent } from './components/kartVeAdresBilgisi/kar
 
 const redirectLogin = () => redirectUnauthorizedTo(['login'])  //atama sayfası
 const routes: Routes = [
+  //admin routing başlangıç
   {
     path: 'admin',
     component: AdminComponent,
@@ -22,20 +23,32 @@ const routes: Routes = [
       authGuardPipe: redirectLogin
     }
   },
+  { path: 'adminlogin', component: AdminLogoinComponent },
+  //admin router bitiş
+
+
+  //login başlangıç
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  //login bitiş
+
+
+  //ortak alan başlangıç
   { path: 'Anasayfa', component: ProductComponent },
-  // {
-  //   path: '',
-  //   component: ProductComponent,
-  //   canActivate: [AngularFireAuthGuard],
-  //   data: {
-  //     authGuardPipe: redirectLogin
-  //   }
-  // },
-  { path: 'adminlogin', component: AdminLogoinComponent },
   { path: 'kategoriler', component: KategorilerComponent },
+  //ortak alan bitiş
+
+
+  //uyelikle girilmesi gereken kişiye özel alan başlangıç
   { path: 'sepetim', component: SepetimComponent },
+
+  {
+    path: 'sepetim/:key', component: SepetimComponent,
+    canActivate: [AngularFireAuthGuard],
+    data: {
+      authGuardPipe: redirectLogin
+    }
+  },
   {
     path: 'urundetay/:key',
     component: UrunlerDetayComponent,
@@ -52,6 +65,8 @@ const routes: Routes = [
       authGuardPipe: redirectLogin
     }
   },
+  //uyelikle girilmesi gereken kişiye özel alan bitiş
+
 
 ];
 

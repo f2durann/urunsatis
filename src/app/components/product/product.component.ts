@@ -19,16 +19,12 @@ export class ProductComponent implements OnInit {
   urunler: Urun[] = [];
   uyebilgi: String = "";
   secUrunSepeteEkele: Uye = new Uye();
-
-
   constructor(
     public fbservis: FbserviceService,
     public Router: Router
   ) { }
   user: string = "";
   ngOnInit() {
-
-
     var user = JSON.parse(localStorage.getItem("user") || '{}');
     this.uid = user.uid;
     this.adsoyad = user.displayName;
@@ -45,34 +41,11 @@ export class ProductComponent implements OnInit {
       this.urunler = data;
     });
   }
-
-  // urunAra() {
-  //   this.fbservis.UrunFiltrele(this.urun).then
-  //  }
-
-  addToCard() {
-    alert("Ürün Spete Eklendi")
-  }
   SepeteEkle() {
-    // this.fbservis.UyeEkle().then(() => {
-    //   alert("sepete eklendi");
-    // });
+    alert("sepete eklendi");
   }
 
 
-
-  // if (this.secKayit.key == null) {
-  //   this.fbservis.UrunEkle(this.secKayit).then(() => {
-  //     this.sonuc.islem = true;
-  //     this.sonuc.mesaj = "Kayıt Eklendi";
-  //   });
-  // }
-  // else {
-  //   this.fbservis.UrunDuzenle(this.secKayit).then(() => {
-  //     this.sonuc.islem = true;
-  //     this.sonuc.mesaj = "Kayıt Düzenlendi";
-  //   });
-  // }
 
 
 

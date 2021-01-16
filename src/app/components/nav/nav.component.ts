@@ -1,6 +1,8 @@
 import { FbserviceService } from './../services/fbservice.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Button } from 'protractor';
+import { DomElementSchemaRegistry } from '@angular/compiler';
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
@@ -26,4 +28,5 @@ export class NavComponent implements OnInit {
     });
 
   }
+
 }

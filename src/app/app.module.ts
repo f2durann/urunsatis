@@ -18,6 +18,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { AdminLogoinComponent } from './components/adminLogoin/adminLogoin.component';
 import { KategorilerComponent } from './components/kategoriler/kategoriler.component';
 import { KartVeAdresBilgisiComponent } from './components/kartVeAdresBilgisi/kartVeAdresBilgisi.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { KartVeAdresBilgisiComponent } from './components/kartVeAdresBilgisi/kar
     KategorilerComponent,
     UrunlerDetayComponent,
     SepetimComponent,
-    KartVeAdresBilgisiComponent
+    KartVeAdresBilgisiComponent,
+    FooterComponent
 
   ],
   imports: [

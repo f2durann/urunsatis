@@ -1,13 +1,9 @@
-<div class="container ">
-  <div class="cow">
-    <div class="col-md-3" style="float: right;">
-      <ul *ngFor="let urun of urunler" class="list-group list-group-horizontal">
-        <a href="">
-          <li class="list-group-item">{{urun.categoryId}}</li>
-        </a>
-
-      </ul>
-    </div>
+<div class="container">
+  <div class="list-group mt-3 d-none d-sm-block">
+    <a href="kategoriler" class="list-group-item list-group-item-action active" aria-current="true">
+      KATEGORİLER
+    </a>
+    <a href="#" class="list-group-item list-group-item-action "
+      *ngFor="let urun of urunler">{{urun.categoryId|uppercase}}</a>
   </div>
-
 </div>

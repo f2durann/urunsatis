@@ -28,4 +28,21 @@ export class AdminLogoinComponent implements OnInit {
       this.sonuc.mesaj = "E-Posta Adresi veya Parola Geçersizdir!";
     });
   }
+  GirisYapAdmin(mail: string, parola: string) {
+    if (mail == "admin@gmail.com" && parola == "123456") {
+      this.fbservis.OturumAc(mail, parola).then((d: { user: any; }) => {
+        if (d.user) {
+          localStorage.setItem("user", JSON.stringify(d.user));
+          this.router.navigate(['/admin']);
+        } else { alert("hatalı giriş") }
+      });
+
+    } else {
+      alert("Kaçak Giriş Gibi Gözüküyor. Müşteri sayfasına yönlendiriliyorsunuz ")
+
+      this.router.navigate(['/login']);
+    }
+  }
+
+
 }
