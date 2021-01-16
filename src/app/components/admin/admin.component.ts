@@ -3,7 +3,7 @@ import { Sonuc } from '../models/sonuc';
 import { Component, OnInit } from '@angular/core';
 import { FbserviceService } from '../services/fbservice.service';
 import { map } from 'rxjs/operators'
-import { Kategory } from '../models/kategori';
+
 
 @Component({
   selector: 'app-admin',
@@ -14,7 +14,7 @@ export class AdminComponent implements OnInit {
   urunler: any;
   kategoryler: any;
   secKayit: Urun = new Urun();
-  secKat: Kategory = new Kategory();
+
   sonuc: Sonuc = new Sonuc();
   urun: any;
   kategory: any;
@@ -24,7 +24,6 @@ export class AdminComponent implements OnInit {
 
   ngOnInit() {
     this.UrunleriListele();
-    this.KatListele();
     this.secKayit.key = null;
 
   }
@@ -69,28 +68,4 @@ export class AdminComponent implements OnInit {
     this.secKayit = new Urun();
     this.secKayit.key = null;
   }
-
-
-
-
-  KatKaydet() {
-    this.fbservis.KategoryEkle(this.secKat).then(() => {
-      this.sonuc.islem = true;
-      this.sonuc.mesaj = "kategory Eklendi";
-      alert("oldu");
-    });
-  }
-  KatListele() {
-    this.fbservis.KatLisetele().snapshotChanges().pipe(
-      map(changes =>
-        changes.map((c: { payload: { key: any; val: () => any; }; }) =>
-          ({ key: c.payload.key, ...c.payload.val() })
-        )
-      )
-    ).subscribe((data: any) => {
-      this.kategoryler = data;
-    });
-  }
-
-
 }

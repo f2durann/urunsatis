@@ -34,7 +34,6 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="sepetim" *ngIf="fbServis.OturumKontrol()">Sepetim</a></li>
-              <li><a class="dropdown-item" *ngIf="fbServis.OturumKontrol()" href="#">Adres Bilgilerim</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
@@ -44,17 +43,9 @@
                   href="Anasayfa">Çıkış
                   Yap</a></li>
             </ul>
-
           </li>
-
-
-
-
         </ul>
-
         <li class="">
-
-
           <button class="btn btn-primary">
             <i class="bi bi-cart4" *ngIf="fbServis.OturumKontrol()" [routerLink]="['/sepetim']">sepetim
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart4"
@@ -65,9 +56,6 @@
             </i>
           </button>
         </li>
-
-
-
       </div>
     </div>
   </nav>

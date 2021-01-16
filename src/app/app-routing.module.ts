@@ -9,7 +9,7 @@ import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/auth
 import { KategorilerComponent } from './components/kategoriler/kategoriler.component';
 import { UrunlerDetayComponent } from './components/urunlerDetay/urunlerDetay.component';
 import { SepetimComponent } from './components/sepetim/sepetim.component';
-import { KartVeAdresBilgisiComponent } from './components/kartVeAdresBilgisi/kartVeAdresBilgisi.component';
+
 
 
 const redirectLogin = () => redirectUnauthorizedTo(['login'])  //atama sayfası
@@ -40,8 +40,6 @@ const routes: Routes = [
 
 
   //uyelikle girilmesi gereken kişiye özel alan başlangıç
-  { path: 'sepetim', component: SepetimComponent },
-
   {
     path: 'sepetim/:key', component: SepetimComponent,
     canActivate: [AngularFireAuthGuard],
@@ -57,17 +55,7 @@ const routes: Routes = [
       authGuardPipe: redirectLogin
     }
   },
-  {
-    path: 'adresvekartbilgisi',
-    component: KartVeAdresBilgisiComponent,
-    canActivate: [AngularFireAuthGuard],
-    data: {
-      authGuardPipe: redirectLogin
-    }
-  },
   //uyelikle girilmesi gereken kişiye özel alan bitiş
-
-
 ];
 
 @NgModule({

@@ -20,7 +20,6 @@ export class CategoryComponent implements OnInit {
   ngOnInit() {
     this.UrunleriListele()
   }
-
   UrunleriListele() {
     this.fbservis.UrunLisetele().snapshotChanges().pipe(
       map(changes =>
